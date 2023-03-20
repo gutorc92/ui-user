@@ -1,0 +1,38 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Create User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="userForm" (ngSubmit)="save()">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="name" required>
+          <mat-hint>Your name</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="lastName" required>
+          <mat-hint>Your last Name</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-hint>Your Email</mat-hint>
+        </mat-form-field>
+      </p>
+      <div class="button-row">
+        <button type="submit" [disabled]="!userForm.valid"  mat-flat-button (click)="save();" color="primary">Save</button>
+        <button mat-flat-button (click)="reset()" color="accent">Reset</button>
+      </div>
+    </form>
+    <div *ngIf="user;">
+      <p>Your previous password is:</p>
+      <p>{{user.password}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

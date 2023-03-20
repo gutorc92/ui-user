@@ -15,11 +15,14 @@ export class UsersDetailComponent {
     private route: ActivatedRoute,
     private userService: UserService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser();
   }
+
+  
 
   getUser(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

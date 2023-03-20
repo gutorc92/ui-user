@@ -4,3 +4,14 @@ export interface User {
   lastName: string;
   email: string;
 }
+
+export interface UserComplete extends User {
+  password: string;
+  createdAt: string;
+}
+
+export interface CreateUser {
+  name?: any;
+  lastName?: any;
+  email?: any;
+}

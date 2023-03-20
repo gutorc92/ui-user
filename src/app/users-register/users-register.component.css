@@ -1,0 +1,8 @@
+.card {
+  max-width: 400px;
+}
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+  margin: 10px;
+}

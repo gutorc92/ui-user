@@ -8,6 +8,7 @@ import { UsersDetailComponent } from './users-detail/users-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MaterialExampleModule} from '../material.module';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import {MaterialExampleModule} from '../material.module';
     FormsModule,
     HttpClientModule,
     MatNativeDateModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

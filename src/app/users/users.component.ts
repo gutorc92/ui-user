@@ -1,4 +1,5 @@
 import { Component, ViewChild, AfterViewInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../user';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {HttpClient} from '@angular/common/http';
@@ -13,7 +14,7 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'lastName'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'actions'];
   exampleDatabase: ExampleHttpDatabase | null;
   data: User[] = [];
 
@@ -24,7 +25,7 @@ export class UsersComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient, private router: Router) {}
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
@@ -64,6 +65,13 @@ export class UsersComponent implements AfterViewInit {
       )
       .subscribe(data => (this.data = data));
   }
+
+  detailClick(id: number) {
+    this.router.navigateByUrl(`/users/${id}`)
+  }
+
+
+
 }
 
 export interface BackendApi {

@@ -10,12 +10,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MaterialExampleModule} from '../material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersRegisterComponent } from './users-register/users-register.component';
+import { LogsComponent } from './logs/logs.component';
+import { LogsDetailComponent } from './logs-detail/logs-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LogsComponent,
     UsersComponent,
     UsersDetailComponent,
-    UsersRegisterComponent
+    UsersRegisterComponent,
+    LogsDetailComponent
   ],
   imports: [
     BrowserModule,

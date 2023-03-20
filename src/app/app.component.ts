@@ -14,6 +14,10 @@ export class AppComponent {
     this.router.navigateByUrl(`/users`)
   }
 
+  listLogsClick() {
+    this.router.navigateByUrl(`/logs`)
+  }
+
   createClick() {
     this.router.navigateByUrl(`/users/create`)
   }

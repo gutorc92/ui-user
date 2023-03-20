@@ -30,7 +30,9 @@ export class UsersComponent implements AfterViewInit {
     private _httpClient: HttpClient,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    console.log('pasou no construtor do user component')
+  }
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
@@ -95,21 +97,9 @@ export class ExampleHttpDatabase {
 
   getRepoIssues(sort: string, order: SortDirection, page: number): Observable<BackendApi> {
     const href = 'http://localhost:3000/users';
-    const requestUrl = `${href}?offset=0&limit=10&sort=${sort}&order=${order}&page=${
-      page + 1
-    }`;
+
+    const requestUrl = `${href}?offset=0&limit=${page*10}&sort=${sort}&order=${order}`;
     console.log('passou aqui', requestUrl)
     return this._httpClient.get<BackendApi>(requestUrl);
   }
 }
-
-/** An example database that the data source uses to retrieve data for the table. */
-
-// export class UsersComponent {
-//   user: User = {
-//     id: 1,
-//     name: 'Teste',
-//     lastName: 'Testando',
-//     email: 'testando@teste.com'
-//   }
-// }

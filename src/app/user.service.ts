@@ -19,4 +19,12 @@ export class UserService {
   saveUser(user: CreateUser) {
     return this._httpClient.post(this.href, user)
   }
+
+  updateUser(user: CreateUser) {
+    return this._httpClient.patch(this.href, user)
+  }
+
+  deleteUser(id: number) {
+    return this._httpClient.delete(`${this.href}/${id}`)
+  }
 }

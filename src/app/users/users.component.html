@@ -33,8 +33,15 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let row">
-          <button md-raised-button>Edit</button>
-          <button (click)="detailClick(row.id);" md-raised-button>Details</button>
+          <button mat-mini-fab color="accent" (click)="editClick(row.id);" md-raised-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="detailClick(row.id);" md-raised-button>
+            <mat-icon>info</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
         <!-- <md-header-cell > Actions </md-header-cell>
         <md-cell *cdkCellDef="let row" >

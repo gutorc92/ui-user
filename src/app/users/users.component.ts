@@ -70,7 +70,9 @@ export class UsersComponent implements AfterViewInit {
     this.router.navigateByUrl(`/users/${id}`)
   }
 
-
+  editClick(id: number) {
+    this.router.navigateByUrl(`/users/edit/${id}`)
+  }
 
 }
 

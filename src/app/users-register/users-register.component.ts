@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../user.service';
-import { UserComplete } from '../user';
+import { User, UserComplete } from '../user';
 
 @Component({
   selector: 'app-users-register',
@@ -12,6 +12,8 @@ import { UserComplete } from '../user';
 })
 export class UsersRegisterComponent {
   user : UserComplete | undefined;
+  btnText: string = 'Save'
+  id: number | undefined = undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +26,33 @@ export class UsersRegisterComponent {
     name: new FormControl('', [Validators.required, Validators.minLength(4)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(4)]),
   })
+
+  ngOnInit(): void {
+    this.getUser();
+  }
+
+  
+
+  getUser(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id !== undefined) {
+      this.userService.getUser(id)
+        .subscribe(user => {
+          this.id = id
+          this.btnText = 'Update'
+          this.userForm.patchValue(user)
+          console.log(user)
+        });
+    }
+  }
   
 
   save() {
-    console.log('email', this.userForm.value)
-    this.userService.saveUser(this.userForm.value).subscribe(data => this.user = data as UserComplete);
+    if (this.id !== undefined) {
+      
+    } else {
+      this.userService.saveUser(this.userForm.value).subscribe(data => this.user = data as UserComplete);
+    }
   }
   reset() {
     console.log('teste')

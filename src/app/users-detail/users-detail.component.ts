@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../user.service';
 import { User } from '../user';
@@ -14,7 +14,8 @@ export class UsersDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
   }
 
@@ -32,5 +33,10 @@ export class UsersDetailComponent {
 
   goBack(): void {
     this.location.back();
+  }
+
+  goEdit(id: number) {
+    this.router.navigateByUrl(`/users/edit/${id}`)
+    console.log('id', id)
   }
 }

@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   listClick() {
-    this.router.navigateByUrl(`/users/`)
+    this.router.navigateByUrl(`/users`)
   }
 
   createClick() {

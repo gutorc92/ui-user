@@ -7,6 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, SortDirection} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-users',
@@ -25,7 +26,11 @@ export class UsersComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _httpClient: HttpClient, private router: Router) {}
+  constructor(
+    private _httpClient: HttpClient,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
@@ -72,6 +77,10 @@ export class UsersComponent implements AfterViewInit {
 
   editClick(id: number) {
     this.router.navigateByUrl(`/users/edit/${id}`)
+  }
+
+  deleteClick(id: number) {
+    this.userService.deleteUser(id).subscribe(data => console.log('data', data));
   }
 
 }

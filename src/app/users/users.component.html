@@ -39,7 +39,7 @@
           <button (click)="detailClick(row.id);" md-raised-button>
             <mat-icon>info</mat-icon>
           </button>
-          <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+          <button (click)="deleteClick(row.id);" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
